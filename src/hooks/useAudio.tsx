@@ -185,7 +185,7 @@ export const AudioProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
     useEffect(() => {
         // Thrilling High-Stakes BGM
-        const music = new Audio('/assets/audio/thriller_bgm.mp3');
+        const music = new Audio('/assets/audio/bgm.mp3');
         music.loop = true;
         music.volume = 0.4;
         musicRef.current = music;
