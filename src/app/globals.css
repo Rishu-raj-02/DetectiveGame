@@ -1,0 +1,145 @@
+:root {
+  --bg-color: #08080a;
+  --panel-bg: rgba(21, 21, 24, 0.8);
+  --panel-border: rgba(255, 255, 255, 0.1);
+  --accent-color: #bc2f32;
+  --accent-glow: rgba(188, 47, 50, 0.5);
+  --text-primary: #f0f0f5;
+  --text-secondary: #a1a1aa;
+  --paper-texture: url("https://www.transparenttextures.com/patterns/black-paper.png");
+  --desk-texture: radial-gradient(circle at center, #1a1a20 0%, #08080a 100%);
+}
+
+::selection {
+  background: var(--accent-color);
+  color: white;
+}
+
+/* Custom Dark Detective Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #2a2a2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-color);
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  /* Prevent body scroll */
+}
+
+body {
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  font-family: 'Inter', -apple-system, sans-serif;
+  background-image: var(--paper-texture);
+  position: fixed;
+  /* Lock body scroll */
+  inset: 0;
+}
+
+/* Cinematic Post-Processing */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at center, transparent 0%, rgba(0, 0, 0, 0.4) 100%),
+    linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.1) 50%),
+    linear-gradient(90deg, rgba(255, 0, 0, 0.03), rgba(0, 255, 0, 0.01), rgba(0, 0, 255, 0.03));
+  background-size: 100% 100%, 100% 4px, 100% 100%;
+  z-index: 9999;
+  opacity: 0.3;
+}
+
+.panel {
+  background-color: var(--panel-bg);
+  border: 1px solid var(--panel-border);
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.6);
+  position: relative;
+  overflow: hidden;
+  backdrop-filter: blur(12px);
+}
+
+/* "Game" UI Elements */
+.button-primary {
+  background-color: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 2px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 0 #7a1f21;
+}
+
+.button-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px var(--accent-glow);
+  filter: brightness(1.1);
+}
+
+.button-primary:active {
+  transform: translateY(2px);
+  box-shadow: 0 0 0 transparent;
+}
+
+.stamped {
+  border: 4px solid var(--accent-color);
+  color: var(--accent-color);
+  padding: 10px 20px;
+  font-weight: 900;
+  text-transform: uppercase;
+  transform: rotate(-5deg);
+  display: inline-block;
+  opacity: 0.8;
+  filter: blur(0.5px);
+  user-select: none;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.8s ease-out forwards;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Consolidated thematic scrollbar */
